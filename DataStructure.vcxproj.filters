@@ -63,7 +63,7 @@
     <ClInclude Include="BinaryTree.h">
       <Filter>头文件\Tree</Filter>
     </ClInclude>
-    <ClInclude Include="Calculate.h">
+    <ClInclude Include="ExpressionStack.h">
       <Filter>头文件\Stack</Filter>
     </ClInclude>
     <ClInclude Include="HuffmanTree.h">
@@ -98,6 +98,12 @@
     </ClInclude>
     <ClInclude Include="Exception.h">
       <Filter>头文件\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="SimulatorQueue.h">
+      <Filter>头文件\Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpressionTree.h">
+      <Filter>头文件\Tree</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

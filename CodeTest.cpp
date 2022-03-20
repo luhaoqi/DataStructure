@@ -9,14 +9,16 @@
 #include "Polynomial.h"
 #include "SequentialStack.h"
 #include "LinkedStack.h"
-#include "Calculate.h"
+#include "ExpressionStack.h"
 #include "SequentialQueue.h"
 #include "LinkedQueue.h"
 #include "SequentialString.h"
 #include "LinkedString.h"
 #include "PriorityQueue.h"
+#include "SimulatorQueue.h"
 #include "LinkedBinaryTree.h"
 #include "HuffmanTree.h"
+#include "ExpressionTree.h"
 
 void ExceptionTest()
 {
@@ -293,23 +295,23 @@ void LinkedStackTest()
     printf("---------- LinkedStack ----------\n\n");
 }
 
-void CalculateTest()
+void ExpressionStackTest()
 {
-    printf("---------- Calculate ----------\n");
+    printf("---------- ExpressionStack ----------\n");
     try
     {
         char E[] = "(2^10 - 24) / (5 * 2^7 + 20 * 18 - (2^4 - 4^2))";
-        Calculate C(E);
+        ExpressionStack C(E);
         printf("%s = %d\n", E, C.getResult());
         char F[] = "(1 / 2) + (3^5 * 10))";
-        Calculate D(F);
+        ExpressionStack D(F);
         printf("%s = %d\n", F, D.getResult());
     }
     catch (const std::exception &E)
     {
         printf("%s\n", E.what());
     }
-    printf("---------- Calculate ----------\n\n");
+    printf("---------- ExpressionStack ----------\n\n");
 }
 
 void SequentialQueueTest()
@@ -449,6 +451,22 @@ void PriorityQueueTest()
 }
 
 /*
+A simulator input sample:
+0 2
+2 7
+4
+1000
+*/
+
+void SimulatorQueueTest()
+{
+    printf("---------- SimulatorQueue ----------\n");
+    SimulatorQueue S;
+    printf("Average wait time is: %d\n", S.GetAverageTime());
+    printf("---------- SimulatorQueue ----------\n\n");
+}
+
+/*
 A binary tree input sample:
 1
 2 3
@@ -504,9 +522,28 @@ void HuffmanTreeTest()
     printf("---------- HuffmanTree ----------\n\n");
 }
 
+void ExpressionTreeTest()
+{
+    printf("---------- ExpressionTree ----------\n");
+    try
+    {
+        char E[] = "2 * 3 + (1 * 2 * 3 + 6 * 6) * (2 + 3) / 5 + 2 / 2";
+        ExpressionStack C(E);
+        printf("%s = %d\n", E, C.getResult());
+        char F[] = "(1 + 2 - 3) * 10 / (2 - 2)";
+        ExpressionStack D(F);
+        printf("%s = %d\n", F, D.getResult());
+    }
+    catch (const std::exception& E)
+    {
+        printf("%s\n", E.what());
+    }
+    printf("---------- ExpressionTree ----------\n\n");
+}
+
 int main()
 {
-    ExceptionTest();
+    ExpressionTreeTest();
 	std::cout << "---------- All The Tests Have Been Finished! ----------\n";
 	return 0;
 }

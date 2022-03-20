@@ -31,7 +31,7 @@ void PriorityQueue<ElementType, CompareRule>::expand()
 {
     ElementType* tempData = elementData;
     totalCapacity <<= 1;
-    elementData = new ElementType[totalCapacity];
+    elementData = new ElementType[totalCapacity + 1];
     for (int i = 0; i <= currentLength; i++)
         elementData[i] = tempData[i];
     delete[] tempData;

@@ -17,10 +17,10 @@ int power(int a, int k)
     return r;
 }
 
-class Calculate
+class ExpressionStack
 {
 private:
-    enum operation
+    enum class operation
     {
         OPA, // (
         ADD, // +
@@ -37,17 +37,17 @@ private:
     void doOperation(operation type, LinkedStack<int>& stack);
 
 public:
-    Calculate(char* sequence);
-    ~Calculate();
+    ExpressionStack(char* sequence);
+    ~ExpressionStack();
     int getResult();
 };
 
-Calculate::operation Calculate::getOperation(int& value)
+ExpressionStack::operation ExpressionStack::getOperation(int& value)
 {
     while (*current && *current == ' ')
         current++;
     if (!*current)
-        return EOL;
+        return operation::EOL;
     if ('0' <= *current && *current <= '9')
     {
         value = 0;
@@ -56,36 +56,36 @@ Calculate::operation Calculate::getOperation(int& value)
             value = value * 10 + *current - '0';
             current++;
         }
-        return VAL;
+        return operation::VAL;
     }
     switch (*current)
     {
     case '(':
         current++;
-        return OPA;
+        return operation::OPA;
     case ')':
         current++;
-        return CPA;
+        return operation::CPA;
     case '+':
         current++;
-        return ADD;
+        return operation::ADD;
     case '-':
         current++;
-        return SUB;
+        return operation::SUB;
     case '*':
         current++;
-        return MUL;
+        return operation::MUL;
     case '/':
         current++;
-        return DIV;
+        return operation::DIV;
     case '^':
         current++;
-        return EXP;
+        return operation::EXP;
     }
-    return EOL;
+    return operation::EOL;
 }
 
-void Calculate::doOperation(operation type, LinkedStack<int>& stack)
+void ExpressionStack::doOperation(operation type, LinkedStack<int>& stack)
 {
     int x, y;
     if (stack.empty())
@@ -98,72 +98,72 @@ void Calculate::doOperation(operation type, LinkedStack<int>& stack)
         x = stack.pop();
     switch (type)
     {
-    case ADD:
+    case operation::ADD:
         stack.push(x + y);
         break;
-    case SUB:
+    case operation::SUB:
         stack.push(x - y);
         break;
-    case MUL:
+    case operation::MUL:
         stack.push(x * y);
         break;
-    case DIV:
+    case operation::DIV:
         if (y == 0)
             throw DivideByZero();
         else
             stack.push(x / y);
         break;
-    case EXP:
+    case operation::EXP:
         stack.push(power(x, y));
         break;
     }
 }
 
-Calculate::Calculate(char* sequence)
+ExpressionStack::ExpressionStack(char* sequence)
 {
     current = expression = new char[strlen(sequence) + 1];
     strcpy(expression, sequence);
 }
 
-Calculate::~Calculate()
+ExpressionStack::~ExpressionStack()
 {
     delete[] expression;
 }
 
-int Calculate::getResult()
+int ExpressionStack::getResult()
 {
     LinkedStack<operation> OperatorStack;
     LinkedStack<int> OperandStack;
-    operation last, top;
+    operation last, top = operation::VAL;
     int value;
-    while ((last = getOperation(value)) != EOL)
+    while ((last = getOperation(value)) != operation::EOL)
     {
         switch (last)
         {
-        case VAL:
+        case operation::VAL:
             OperandStack.push(value);
             break;
-        case OPA:
-            OperatorStack.push(OPA);
+        case operation::OPA:
+            OperatorStack.push(operation::OPA);
             break;
-        case CPA:
-            while (!OperatorStack.empty() && (top = OperatorStack.pop()) != OPA)
+        case operation::CPA:
+            while (!OperatorStack.empty() && (top = OperatorStack.pop()) != operation::OPA)
                 doOperation(top, OperandStack);
-            if (top != OPA)
+            if (top != operation::OPA)
                 throw MissingElement("Error: Left operand is missing");
             break;
-        case EXP:
-            OperatorStack.push(EXP);
+        case operation::EXP:
+            OperatorStack.push(operation::EXP);
             break;
-        case MUL:
-        case DIV:
-            while (!OperatorStack.empty() && OperatorStack.top() >= MUL)
+        case operation::MUL:
+        case operation::DIV:
+            while (!OperatorStack.empty() && OperatorStack.top() >= operation::MUL)
                 doOperation(OperatorStack.pop(), OperandStack);
             OperatorStack.push(last);
             break;
-        case ADD:
-        case SUB:
-            while (!OperatorStack.empty() && OperatorStack.top() != OPA)
+        case operation::ADD:
+        case operation::SUB:
+            while (!OperatorStack.empty() && OperatorStack.top() != operation::OPA)
                 doOperation(OperatorStack.pop(), OperandStack);
             OperatorStack.push(last);
             break;

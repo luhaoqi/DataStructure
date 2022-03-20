@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>6386</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,6 +103,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>6386</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,10 +143,11 @@
   <ItemGroup>
     <ClInclude Include="BigInteger.h" />
     <ClInclude Include="BinaryTree.h" />
-    <ClInclude Include="Calculate.h" />
+    <ClInclude Include="ExpressionStack.h" />
     <ClInclude Include="Compare.h" />
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="Exception.h" />
+    <ClInclude Include="ExpressionTree.h" />
     <ClInclude Include="HuffmanTree.h" />
     <ClInclude Include="LinkedBinaryTree.h" />
     <ClInclude Include="LinkedQueue.h" />
@@ -158,6 +161,7 @@
     <ClInclude Include="SequentialQueue.h" />
     <ClInclude Include="SequentialStack.h" />
     <ClInclude Include="SequentialString.h" />
+    <ClInclude Include="SimulatorQueue.h" />
     <ClInclude Include="SingleLinkedList.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="String.h" />
