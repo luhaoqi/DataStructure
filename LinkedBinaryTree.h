@@ -76,7 +76,7 @@ typename LinkedBinaryTree<ElementType>::BinaryTreeNode* LinkedBinaryTree<Element
 {
     if (current == nullptr || (current->left == nullptr && current->right == nullptr))
         return nullptr;
-    if (current->left->data == target || current->right->data == target)
+    if ((current->left != nullptr && current->left->data == target) || (current->right != nullptr && current->right->data == target))
         return current;
     if (current->left != nullptr)
     {

@@ -11,7 +11,7 @@ private:
     {
         int coef, expo;
         Item* next;
-        Item() : next(nullptr) {}
+        Item() : coef(0), expo(0), next(nullptr) {}
         Item(int _coef, int _expo, Item* _next = nullptr) : coef(_coef), expo(_expo), next(_next) {}
     };
     Item* head;

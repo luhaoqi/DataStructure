@@ -12,7 +12,7 @@ private:
     {
         ElementType data;
         int weight, index, parent, left, right;
-        HuffmanNode() {}
+        HuffmanNode() : data(), weight(0), index(0), parent(0), left(0), right(0) {}
         HuffmanNode(const ElementType& _data, int _weight, int _index = 0, int _parent = 0, int _left = 0, int _right = 0) : data(_data), weight(_weight), index(_index), parent(_parent), left(_left), right(_right) {}
         bool operator<(const HuffmanNode& another) const
         {
@@ -27,7 +27,7 @@ public:
     {
         ElementType data;
         SequentialString code;
-        HuffmanCode() {}
+        HuffmanCode() : data(), code() {}
         HuffmanCode(ElementType _data, SequentialString _code = "") : data(_data), code(_code) {}
     };
     HuffmanTree(const ElementType* content, const int* frequency, int size);

@@ -11,7 +11,7 @@ private:
     {
         ElementType data;
         ListNode* next;
-        ListNode() : next(nullptr) {}
+        ListNode() : data(), next(nullptr) {}
         ListNode(const ElementType& _data, ListNode* _next = nullptr) : data(_data), next(_next) {}
         ~ListNode() {}
     };
