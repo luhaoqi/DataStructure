@@ -31,6 +31,9 @@
     <Filter Include="头文件\Basic">
       <UniqueIdentifier>{8bf356f2-ef4a-4037-a1d8-39e4c59e44e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Set">
+      <UniqueIdentifier>{4f4a8f02-0c34-4978-b3ab-e87412d384a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="List.h">
@@ -104,6 +107,18 @@
     </ClInclude>
     <ClInclude Include="ExpressionTree.h">
       <Filter>头文件\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="Set.h">
+      <Filter>头文件\Set</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticSet.h">
+      <Filter>头文件\Set</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicSet.h">
+      <Filter>头文件\Set</Filter>
+    </ClInclude>
+    <ClInclude Include="BinarySearchTree.h">
+      <Filter>头文件\Set</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 #include "Exception.h"
 #include "LinkedQueue.h"
 #include "PriorityQueue.h"

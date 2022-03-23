@@ -7,7 +7,7 @@ class IndexExceed : public std::exception
 private:
 	char* message;
 public:
-	IndexExceed(const char* content= "Error: Index is out of range")
+	IndexExceed(const char* content = "Error: Index is out of range")
 	{
 		message = new char[strlen(content) + 1];
 		strcpy(message, content);

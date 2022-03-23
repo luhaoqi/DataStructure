@@ -19,194 +19,196 @@
 #include "LinkedBinaryTree.h"
 #include "HuffmanTree.h"
 #include "ExpressionTree.h"
+#include "StaticSet.h"
+#include "BinarySearchTree.h"
 
 void ExceptionTest()
 {
-    try
-    {
-        DoubleLinkedList<int> L;
-        for (int i = 0; i < 10; i++)
-            L.push_back(i);
-        printf("%d\n", L.fetch(10));
-        for (int i = 0; i < 10; i++)
-            L.push_front(i + 10);
-    }
-    catch (const IndexExceed& E)
-    {
-        printf("%s\n", E.what());
-    }
-    catch (const InvalidModify& E)
-    {
-        printf("%s\n", E.what());
-    }
-    try
-    {
-        BigInteger x(10), y(0);
-        BigInteger z = x / y;
-        std::cout << z << std::endl;
-    }
-    catch (const DivideByZero& E)
-    {
-        printf("%s\n", E.what());
-    }
-    try
-    {
-        SequentialStack<int> S;
-        S.pop();
-        S.push(1);
-        printf("%d\n", S.top());
-    }
-    catch (const std::exception& E)
-    {
-        printf("%s\n", E.what());
-    }
-    try
-    {
-        SequentialQueue<int> Q;
-        Q.pop();
-        Q.push(1);
-        printf("%d\n", Q.front());
-    }
-    catch (const std::exception& E)
-    {
-        printf("%s\n", E.what());
-    }
-    try
-    {
-        PriorityQueue<int> Q;
-        Q.pop();
-        Q.push(1);
-        printf("%d\n", Q.top());
-    }
-    catch (const std::exception& E)
-    {
-        printf("%s\n", E.what());
-    }
+	try
+	{
+		DoubleLinkedList<int> L;
+		for (int i = 0; i < 10; i++)
+			L.push_back(i);
+		printf("%d\n", L.fetch(10));
+		for (int i = 0; i < 10; i++)
+			L.push_front(i + 10);
+	}
+	catch (const IndexExceed& E)
+	{
+		printf("%s\n", E.what());
+	}
+	catch (const InvalidModify& E)
+	{
+		printf("%s\n", E.what());
+	}
+	try
+	{
+		BigInteger x(10), y(0);
+		BigInteger z = x / y;
+		std::cout << z << std::endl;
+	}
+	catch (const DivideByZero& E)
+	{
+		printf("%s\n", E.what());
+	}
+	try
+	{
+		SequentialStack<int> S;
+		S.pop();
+		S.push(1);
+		printf("%d\n", S.top());
+	}
+	catch (const std::exception& E)
+	{
+		printf("%s\n", E.what());
+	}
+	try
+	{
+		SequentialQueue<int> Q;
+		Q.pop();
+		Q.push(1);
+		printf("%d\n", Q.front());
+	}
+	catch (const std::exception& E)
+	{
+		printf("%s\n", E.what());
+	}
+	try
+	{
+		PriorityQueue<int> Q;
+		Q.pop();
+		Q.push(1);
+		printf("%d\n", Q.top());
+	}
+	catch (const std::exception& E)
+	{
+		printf("%s\n", E.what());
+	}
 }
 
 void SequentialListTest()
 {
-    printf("---------- SequentialList ----------\n");
-    int a[] = { 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 };
-    SequentialList<int> s(5);
-    for (int i = 0; i < 10; i++)
-        s.append(a[i]);
-    s.traverse();
-    if (s.find(4) == -1)
-        printf("Element 4 was not found in list\n");
-    printf("Element 34 was found by index %d\n", s.find(34));
-    printf("Element %d was fetched by index 3\n", s.fetch(3));
-    printf("Element %d was visited by index 3\n", s[3]);
-    for (int i = 1; i <= 4; i++)
-        s.remove(3);
-    s.insert(3, 114514);
-    printf("Current length of list is %d\n", s.length());
-    s.traverse();
-    printf("---------- SequentialList ----------\n\n");
+	printf("---------- SequentialList ----------\n");
+	int a[] = { 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 };
+	SequentialList<int> s(5);
+	for (int i = 0; i < 10; i++)
+		s.append(a[i]);
+	s.traverse();
+	if (s.find(4) == -1)
+		printf("Element 4 was not found in list\n");
+	printf("Element 34 was found by index %d\n", s.find(34));
+	printf("Element %d was fetched by index 3\n", s.fetch(3));
+	printf("Element %d was visited by index 3\n", s[3]);
+	for (int i = 1; i <= 4; i++)
+		s.remove(3);
+	s.insert(3, 114514);
+	printf("Current length of list is %d\n", s.length());
+	s.traverse();
+	printf("---------- SequentialList ----------\n\n");
 }
 
 void SingleLinkedListTest()
 {
-    printf("---------- SingleLinkedList ----------\n");
-    int a[] = { 1, 4, 7, 10, 1, 4, 7, 10, 1, 4 };
-    SingleLinkedList<int> s;
-    for (int i = 0; i < 10; i++)
-        s.append(a[i]);
-    s.traverse();
-    if (s.find(5) == -1)
-        printf("Element 5 was not found in list\n");
-    printf("Element 10 was found by index %d\n", s.find(10));
-    printf("Element %d was fetched by index 3\n", s.fetch(3));
-    for (int i = 1; i <= 3; i++)
-        s.remove(2);
-    s.insert(2, 114514);
-    printf("Current length of list is %d\n", s.length());
-    s.traverse();
-    printf("Erase relevant element by index 1\n");
-    s.erase(1);
-    s.traverse();
-    printf("---------- SingleLinkedList ----------\n\n");
+	printf("---------- SingleLinkedList ----------\n");
+	int a[] = { 1, 4, 7, 10, 1, 4, 7, 10, 1, 4 };
+	SingleLinkedList<int> s;
+	for (int i = 0; i < 10; i++)
+		s.append(a[i]);
+	s.traverse();
+	if (s.find(5) == -1)
+		printf("Element 5 was not found in list\n");
+	printf("Element 10 was found by index %d\n", s.find(10));
+	printf("Element %d was fetched by index 3\n", s.fetch(3));
+	for (int i = 1; i <= 3; i++)
+		s.remove(2);
+	s.insert(2, 114514);
+	printf("Current length of list is %d\n", s.length());
+	s.traverse();
+	printf("Erase relevant element by index 1\n");
+	s.erase(1);
+	s.traverse();
+	printf("---------- SingleLinkedList ----------\n\n");
 }
 
 void DoubleLinkedListTest()
 {
-    printf("---------- DoubleLinkedList ----------\n");
-    DoubleLinkedList<int> s;
-    for (int i = 1; i <= 5; i++)
-    {
-        s.push_front(2 * i - 1);
-        s.push_back(2 * i);
-    }
-    s.traverse();
-    if (s.find(11) == -1)
-        printf("Element 11 was not found in list\n");
-    printf("Element 8 was found by index %d\n", s.find(8));
-    printf("Element %d was fetched by index 4\n", s.fetch(4));
-    for (int i = 1; i <= 3; i++)
-        s.remove(2);
-    s.insert(2, 114514);
-    printf("Current length of list is %d\n", s.length());
-    s.traverse();
-    printf("List was reversed in order\n");
-    s.reverse();
-    s.traverse();
-    printf("Element 8 was found by index %d\n", s.find(8));
-    printf("Clear all element in list\n");
-    s.clear();
-    if (s.find(8) == -1)
-        printf("Element 8 was not found in list\n");
-    printf("Current length of list is %d\n", s.length());
-    printf("---------- DoubleLinkedList ----------\n\n");
+	printf("---------- DoubleLinkedList ----------\n");
+	DoubleLinkedList<int> s;
+	for (int i = 1; i <= 5; i++)
+	{
+		s.push_front(2 * i - 1);
+		s.push_back(2 * i);
+	}
+	s.traverse();
+	if (s.find(11) == -1)
+		printf("Element 11 was not found in list\n");
+	printf("Element 8 was found by index %d\n", s.find(8));
+	printf("Element %d was fetched by index 4\n", s.fetch(4));
+	for (int i = 1; i <= 3; i++)
+		s.remove(2);
+	s.insert(2, 114514);
+	printf("Current length of list is %d\n", s.length());
+	s.traverse();
+	printf("List was reversed in order\n");
+	s.reverse();
+	s.traverse();
+	printf("Element 8 was found by index %d\n", s.find(8));
+	printf("Clear all element in list\n");
+	s.clear();
+	if (s.find(8) == -1)
+		printf("Element 8 was not found in list\n");
+	printf("Current length of list is %d\n", s.length());
+	printf("---------- DoubleLinkedList ----------\n\n");
 }
 
 void BigIntegerTest()
 {
-    using namespace std;
-    printf("---------- BigInteger ----------\n");
-    BigInteger a("1"), b, c("-1"), d(2), e(-2);
-    cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
-    b = c;
-    cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
-    a += b;
-    b += c;
-    c += d;
-    e = d + d;
-    d = b + b;
-    cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
-    a -= b;
-    b -= c;
-    d = c - e;
-    c = d - (-d);
-    e = d - d;
-    cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
-    a = a * a * a;
-    b *= a;
-    c *= b;
-    d *= -1;
-    a *= d;
-    e *= c;
-    cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
-    c /= a;
-    b /= c;
-    e /= d;
-    d /= c;
-    b /= c;
-    a /= 5;
-    cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
-    b = c % a;
-    d = c % 5;
-    e = c % b;
-    a = c % -4;
-    c = -7 % c;
-    b %= 1;
-    cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
-    a = power(2, 0);
-    b = power(2, 1);
-    c = power(2, 10);
-    d = power(2, 30);
-    e = power(2, 100);
-    cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
-    printf("---------- BigInteger ----------\n\n");
+	using namespace std;
+	printf("---------- BigInteger ----------\n");
+	BigInteger a("1"), b, c("-1"), d(2), e(-2);
+	cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
+	b = c;
+	cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
+	a += b;
+	b += c;
+	c += d;
+	e = d + d;
+	d = b + b;
+	cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
+	a -= b;
+	b -= c;
+	d = c - e;
+	c = d - (-d);
+	e = d - d;
+	cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
+	a = a * a * a;
+	b *= a;
+	c *= b;
+	d *= -1;
+	a *= d;
+	e *= c;
+	cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
+	c /= a;
+	b /= c;
+	e /= d;
+	d /= c;
+	b /= c;
+	a /= 5;
+	cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
+	b = c % a;
+	d = c % 5;
+	e = c % b;
+	a = c % -4;
+	c = -7 % c;
+	b %= 1;
+	cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
+	a = power(2, 0);
+	b = power(2, 1);
+	c = power(2, 10);
+	d = power(2, 30);
+	e = power(2, 100);
+	cout << a << "\t" << b << "\t" << c << "\t" << d << "\t" << e << endl;
+	printf("---------- BigInteger ----------\n\n");
 }
 
 /*
@@ -229,225 +231,225 @@ A polynomial input sample:
 
 void PolynomialTest()
 {
-    printf("---------- Polynomial ----------\n");
-    Polynomial P, Q;
-    P.input();
-    P.output();
-    Q.input();
-    Q.output();
-    Polynomial R = P + Q;
-    printf("Two polynomial are added to be:\n");
-    R.output();
-    printf("---------- Polynomial ----------\n\n");
+	printf("---------- Polynomial ----------\n");
+	Polynomial P, Q;
+	P.input();
+	P.output();
+	Q.input();
+	Q.output();
+	Polynomial R = P + Q;
+	printf("Two polynomial are added to be:\n");
+	R.output();
+	printf("---------- Polynomial ----------\n\n");
 }
 
 void SequentialStackTest()
 {
-    printf("---------- SequentialStack ----------\n");
-    SequentialStack<int> s(5);
-    for (int i = 0; i < 5; i++)
-        s.push(i);
-    s.pop();
-    for (int i = 5; i < 10; i++)
-        s.push(i);
-    while (!s.empty())
-    {
-        printf("%d ", s.top());
-        s.pop();
-    }
-    printf("\n");
-    s.clear();
-    for (int i = 10; i < 15; i++)
-        s.push(i);
-    while (!s.empty())
-    {
-        printf("%d ", s.top());
-        s.pop();
-    }
-    printf("\n");
-    printf("---------- SequentialStack ----------\n\n");
+	printf("---------- SequentialStack ----------\n");
+	SequentialStack<int> s(5);
+	for (int i = 0; i < 5; i++)
+		s.push(i);
+	s.pop();
+	for (int i = 5; i < 10; i++)
+		s.push(i);
+	while (!s.empty())
+	{
+		printf("%d ", s.top());
+		s.pop();
+	}
+	printf("\n");
+	s.clear();
+	for (int i = 10; i < 15; i++)
+		s.push(i);
+	while (!s.empty())
+	{
+		printf("%d ", s.top());
+		s.pop();
+	}
+	printf("\n");
+	printf("---------- SequentialStack ----------\n\n");
 }
 
 void LinkedStackTest()
 {
-    printf("---------- LinkedStack ----------\n");
-    LinkedStack<int> s;
-    for (int i = 0; i < 5; i++)
-        s.push(i);
-    s.pop();
-    for (int i = 5; i < 10; i++)
-        s.push(i);
-    while (!s.empty())
-    {
-        printf("%d ", s.top());
-        s.pop();
-    }
-    printf("\n");
-    s.clear();
-    for (int i = 10; i < 15; i++)
-        s.push(i);
-    while (!s.empty())
-    {
-        printf("%d ", s.top());
-        s.pop();
-    }
-    printf("\n");
-    printf("---------- LinkedStack ----------\n\n");
+	printf("---------- LinkedStack ----------\n");
+	LinkedStack<int> s;
+	for (int i = 0; i < 5; i++)
+		s.push(i);
+	s.pop();
+	for (int i = 5; i < 10; i++)
+		s.push(i);
+	while (!s.empty())
+	{
+		printf("%d ", s.top());
+		s.pop();
+	}
+	printf("\n");
+	s.clear();
+	for (int i = 10; i < 15; i++)
+		s.push(i);
+	while (!s.empty())
+	{
+		printf("%d ", s.top());
+		s.pop();
+	}
+	printf("\n");
+	printf("---------- LinkedStack ----------\n\n");
 }
 
 void ExpressionStackTest()
 {
-    printf("---------- ExpressionStack ----------\n");
-    try
-    {
-        char E[] = "(2^10 - 24) / (5 * 2^7 + 20 * 18 - (2^4 - 4^2))";
-        ExpressionStack C(E);
-        printf("%s = %d\n", E, C.getResult());
-        char F[] = "(1 / 2) + (3^5 * 10))";
-        ExpressionStack D(F);
-        printf("%s = %d\n", F, D.getResult());
-    }
-    catch (const std::exception &E)
-    {
-        printf("%s\n", E.what());
-    }
-    printf("---------- ExpressionStack ----------\n\n");
+	printf("---------- ExpressionStack ----------\n");
+	try
+	{
+		char E[] = "(2^10 - 24) / (5 * 2^7 + 20 * 18 - (2^4 - 4^2))";
+		ExpressionStack C(E);
+		printf("%s = %d\n", E, C.getResult());
+		char F[] = "(1 / 2) + (3^5 * 10))";
+		ExpressionStack D(F);
+		printf("%s = %d\n", F, D.getResult());
+	}
+	catch (const std::exception& E)
+	{
+		printf("%s\n", E.what());
+	}
+	printf("---------- ExpressionStack ----------\n\n");
 }
 
 void SequentialQueueTest()
 {
-    printf("---------- SequentialQueue ----------\n");
-    SequentialQueue<int> Q(5);
-    for (int i = 0; i < 5; i++)
-        Q.push(i);
-    Q.pop();
-    for (int i = 5; i < 10; i++)
-        Q.push(i);
-    while (!Q.empty())
-    {
-        printf("%d ", Q.front());
-        Q.pop();
-    }
-    printf("\n");
-    Q.clear();
-    for (int i = 10; i < 15; i++)
-        Q.push(i);
-    while (!Q.empty())
-    {
-        printf("%d ", Q.front());
-        Q.pop();
-    }
-    printf("\n");
-    printf("---------- SequentialQueue ----------\n\n");
+	printf("---------- SequentialQueue ----------\n");
+	SequentialQueue<int> Q(5);
+	for (int i = 0; i < 5; i++)
+		Q.push(i);
+	Q.pop();
+	for (int i = 5; i < 10; i++)
+		Q.push(i);
+	while (!Q.empty())
+	{
+		printf("%d ", Q.front());
+		Q.pop();
+	}
+	printf("\n");
+	Q.clear();
+	for (int i = 10; i < 15; i++)
+		Q.push(i);
+	while (!Q.empty())
+	{
+		printf("%d ", Q.front());
+		Q.pop();
+	}
+	printf("\n");
+	printf("---------- SequentialQueue ----------\n\n");
 }
 
 void LinkedQueueTest()
 {
-    printf("---------- LinkedQueue ----------\n");
-    SequentialQueue<int> Q;
-    for (int i = 0; i < 5; i++)
-        Q.push(i);
-    Q.pop();
-    for (int i = 5; i < 10; i++)
-        Q.push(i);
-    while (!Q.empty())
-    {
-        printf("%d ", Q.front());
-        Q.pop();
-    }
-    printf("\n");
-    Q.clear();
-    for (int i = 10; i < 15; i++)
-        Q.push(i);
-    while (!Q.empty())
-    {
-        printf("%d ", Q.front());
-        Q.pop();
-    }
-    printf("\n");
-    printf("---------- LinkedQueue ----------\n\n");
+	printf("---------- LinkedQueue ----------\n");
+	SequentialQueue<int> Q;
+	for (int i = 0; i < 5; i++)
+		Q.push(i);
+	Q.pop();
+	for (int i = 5; i < 10; i++)
+		Q.push(i);
+	while (!Q.empty())
+	{
+		printf("%d ", Q.front());
+		Q.pop();
+	}
+	printf("\n");
+	Q.clear();
+	for (int i = 10; i < 15; i++)
+		Q.push(i);
+	while (!Q.empty())
+	{
+		printf("%d ", Q.front());
+		Q.pop();
+	}
+	printf("\n");
+	printf("---------- LinkedQueue ----------\n\n");
 }
 
 void SequentialStringTest()
 {
-    printf("---------- SequentialString ----------\n");
-    using namespace std;
-    SequentialString x("123456789"), y("abc");
-    x += y;
-    y = x.slice(7, 4);
-    x.remove(2, 3);
-    cout << x << "\t" << y << endl;
-    cout << x.length() << "\t" << y.length() << endl;
-    x = SequentialString("abandon");
-    y = SequentialString("absolute");
-    if (x <= y && x < y)
-        printf("abandon < absolute\n");
-    x = SequentialString("abcdefg");
-    y = SequentialString("bcd");
-    if (x != y)
-        printf("Unequal!\n");
-    for (int i = 0; i < x.length(); i++)
-        printf("%c", x[i]);
-    printf("\n");
-    printf("bcd is found in abcdefg at index %d\n", x.find(y));
-    printf("bcd is found in bcd at index %d\n", y.find(y));
-    if (y.find(x) == -1)
-        printf("abcdefg is not found in bcd\n");
-    printf("---------- SequentialString ----------\n\n");
+	printf("---------- SequentialString ----------\n");
+	using namespace std;
+	SequentialString x("123456789"), y("abc");
+	x += y;
+	y = x.slice(7, 4);
+	x.remove(2, 3);
+	cout << x << "\t" << y << endl;
+	cout << x.length() << "\t" << y.length() << endl;
+	x = SequentialString("abandon");
+	y = SequentialString("absolute");
+	if (x <= y && x < y)
+		printf("abandon < absolute\n");
+	x = SequentialString("abcdefg");
+	y = SequentialString("bcd");
+	if (x != y)
+		printf("Unequal!\n");
+	for (int i = 0; i < x.length(); i++)
+		printf("%c", x[i]);
+	printf("\n");
+	printf("bcd is found in abcdefg at index %d\n", x.find(y));
+	printf("bcd is found in bcd at index %d\n", y.find(y));
+	if (y.find(x) == -1)
+		printf("abcdefg is not found in bcd\n");
+	printf("---------- SequentialString ----------\n\n");
 }
 
 void LinkedStringTest()
 {
-    printf("---------- LinkedString ----------\n");
-    using namespace std;
-    LinkedString x("123456789"), y("abc");
-    x += y;
-    y = x.slice(7, 4);
-    x.remove(2, 3);
-    cout << x << "\t" << y << endl;
-    cout << x.length() << "\t" << y.length() << endl;
-    x = LinkedString("abandon");
-    y = LinkedString("absolute");
-    if (x <= y && x < y)
-        printf("abandon < absolute\n");
-    x = LinkedString("abcdefg");
-    y = LinkedString("abcdefg ");
-    if (x != y)
-        printf("Unequal!\n");
-    printf("%d\n", x.length());
-    for (int i = 0; i < x.length(); i++)
-        printf("%c", x[i]);
-    printf("\n");
-    printf("---------- LinkedString ----------\n\n");
+	printf("---------- LinkedString ----------\n");
+	using namespace std;
+	LinkedString x("123456789"), y("abc");
+	x += y;
+	y = x.slice(7, 4);
+	x.remove(2, 3);
+	cout << x << "\t" << y << endl;
+	cout << x.length() << "\t" << y.length() << endl;
+	x = LinkedString("abandon");
+	y = LinkedString("absolute");
+	if (x <= y && x < y)
+		printf("abandon < absolute\n");
+	x = LinkedString("abcdefg");
+	y = LinkedString("abcdefg ");
+	if (x != y)
+		printf("Unequal!\n");
+	printf("%d\n", x.length());
+	for (int i = 0; i < x.length(); i++)
+		printf("%c", x[i]);
+	printf("\n");
+	printf("---------- LinkedString ----------\n\n");
 }
 
 void PriorityQueueTest()
 {
-    printf("---------- PriorityQueue ----------\n");
-    PriorityQueue<int> heap;
-    int array[15] = { 7, 4, 1, 6, 5, 9, 3, 0, 8, 2 };
-    for (int i = 0; i < 10; i++)
-        heap.push(array[i]);
-    for (int i = 0; i < 10; i++)
-        printf("%d ", heap.pop());
-    printf("\n");
-    heap.clear();
-    for (int i = 0; i < 10; i++)
-        array[i] = i;
-    PriorityQueue<int, Greater<int>> queue(array, 10);
-    for (int i = 1; i <= 5; i++)
-        queue.push(100 + i);
-    for (int i = 0; i < 15; i++)
-    {
-        int x = queue.front();
-        queue.pop();
-        printf("%d ", x);
-    }
-    printf("\n");
-    heap.clear();
-    if (heap.empty())
-        printf("Now heap is already empty!\n");
-    printf("---------- PriorityQueue ----------\n\n");
+	printf("---------- PriorityQueue ----------\n");
+	PriorityQueue<int> heap;
+	int array[15] = { 7, 4, 1, 6, 5, 9, 3, 0, 8, 2 };
+	for (int i = 0; i < 10; i++)
+		heap.push(array[i]);
+	for (int i = 0; i < 10; i++)
+		printf("%d ", heap.pop());
+	printf("\n");
+	heap.clear();
+	for (int i = 0; i < 10; i++)
+		array[i] = i;
+	PriorityQueue<int, Greater<int>> queue(array, 10);
+	for (int i = 1; i <= 5; i++)
+		queue.push(100 + i);
+	for (int i = 0; i < 15; i++)
+	{
+		int x = queue.front();
+		queue.pop();
+		printf("%d ", x);
+	}
+	printf("\n");
+	heap.clear();
+	if (heap.empty())
+		printf("Now heap is already empty!\n");
+	printf("---------- PriorityQueue ----------\n\n");
 }
 
 /*
@@ -460,10 +462,10 @@ A simulator input sample:
 
 void SimulatorQueueTest()
 {
-    printf("---------- SimulatorQueue ----------\n");
-    SimulatorQueue S;
-    printf("Average wait time is: %d\n", S.GetAverageTime());
-    printf("---------- SimulatorQueue ----------\n\n");
+	printf("---------- SimulatorQueue ----------\n");
+	SimulatorQueue S;
+	printf("Average wait time is: %d\n", S.GetAverageTime());
+	printf("---------- SimulatorQueue ----------\n\n");
 }
 
 /*
@@ -482,68 +484,142 @@ A binary tree input sample:
 
 void LinkedBinaryTreeTest()
 {
-    printf("---------- LinkedBinaryTree ----------\n");
-    LinkedBinaryTree<int> T;
-    T.createTree(-1);
-    T.doPreOrder();
-    T.doInOrder();
-    T.doPostOrder();
-    T.doLevelOrder();
-    printTree(T, -1);
-    printf("Size of binary tree is %d\n", T.size());
-    printf("Height of binary tree is %d\n", T.height());
-    T.deleteLeftChild(2);
-    T.deleteRightChild(3);
-    printTree(T, -1);
-    printf("Size of binary tree is %d\n", T.size());
-    printf("Height of binary tree is %d\n", T.height());
-    T.insertLeftChild(2, 10);
-    T.insertLeftChild(10, 11);
-    T.insertRightChild(10, 12);
-    T.insertRightChild(3, 12);
-    T.insertLeftChild(12, 13);
-    printTree(T, -1);
-    printf("Size of binary tree is %d\n", T.size());
-    printf("Height of binary tree is %d\n", T.height());
-    printf("---------- LinkedBinaryTree ----------\n\n");
+	printf("---------- LinkedBinaryTree ----------\n");
+	LinkedBinaryTree<int> T;
+	T.createTree(-1);
+	T.doPreOrder();
+	T.doInOrder();
+	T.doPostOrder();
+	T.doLevelOrder();
+	printTree(T, -1);
+	printf("Size of binary tree is %d\n", T.size());
+	printf("Height of binary tree is %d\n", T.height());
+	T.deleteLeftChild(2);
+	T.deleteRightChild(3);
+	printTree(T, -1);
+	printf("Size of binary tree is %d\n", T.size());
+	printf("Height of binary tree is %d\n", T.height());
+	T.insertLeftChild(2, 10);
+	T.insertLeftChild(10, 11);
+	T.insertRightChild(10, 12);
+	T.insertRightChild(3, 12);
+	T.insertLeftChild(12, 13);
+	printTree(T, -1);
+	printf("Size of binary tree is %d\n", T.size());
+	printf("Height of binary tree is %d\n", T.height());
+	printf("---------- LinkedBinaryTree ----------\n\n");
 }
 
 void HuffmanTreeTest()
 {
-    printf("---------- HuffmanTree ----------\n");
-    char d[] = "abcde";
-    int t[] = { 1, 2, 2, 5, 9 };
-    HuffmanTree<char> T(d, t, 5);
-    HuffmanTree<char>::HuffmanCode C[5];
-    T.getCode(C);
-    for (int i = 0; i < 5; i++)
-        std::cout << C[i].data << ": " << C[i].code << std::endl;
-    printf("Total weight: %d\n", T.getWeight());
-    printf("---------- HuffmanTree ----------\n\n");
+	printf("---------- HuffmanTree ----------\n");
+	char d[] = "abcde";
+	int t[] = { 1, 2, 2, 5, 9 };
+	HuffmanTree<char> T(d, t, 5);
+	HuffmanTree<char>::HuffmanCode C[5];
+	T.getCode(C);
+	for (int i = 0; i < 5; i++)
+		std::cout << C[i].data << ": " << C[i].code << std::endl;
+	printf("Total weight: %d\n", T.getWeight());
+	printf("---------- HuffmanTree ----------\n\n");
 }
 
 void ExpressionTreeTest()
 {
-    printf("---------- ExpressionTree ----------\n");
-    try
-    {
-        char E[] = "2 * 3 + (1 * 2 * 3 + 6 * 6) * (2 + 3) / 5 + 2 / 2";
-        ExpressionStack C(E);
-        printf("%s = %d\n", E, C.getResult());
-        char F[] = "(1 + 2 - 3) * 10 / (2 - 2)";
-        ExpressionStack D(F);
-        printf("%s = %d\n", F, D.getResult());
-    }
-    catch (const std::exception& E)
-    {
-        printf("%s\n", E.what());
-    }
-    printf("---------- ExpressionTree ----------\n\n");
+	printf("---------- ExpressionTree ----------\n");
+	try
+	{
+		char E[] = "2 * 3 + (1 * 2 * 3 + 6 * 6) * (2 + 3) / 5 + 2 / 2";
+		ExpressionStack C(E);
+		printf("%s = %d\n", E, C.getResult());
+		char F[] = "(1 + 2 - 3) * 10 / (2 - 2)";
+		ExpressionStack D(F);
+		printf("%s = %d\n", F, D.getResult());
+	}
+	catch (const std::exception& E)
+	{
+		printf("%s\n", E.what());
+	}
+	printf("---------- ExpressionTree ----------\n\n");
+}
+
+void StaticSetTest()
+{
+	printf("---------- StaticSet ----------\n");
+	SetElement<int, int> S[15];
+	for (int i = 1; i <= 10; i++)
+	{
+		S[i].key = i * 10;
+		S[i].data = 1 << i;
+	}
+	int p = SequentialSearch(S, 10, 51);
+	if (!p)
+		printf("Key 51 is not found in table\n");
+	p = SequentialSearch(S, 10, 60);
+	printf("Key 60: key = %d, data = %d\n", S[p].key, S[p].data);
+	p = BinarySearch(S, 10, 0);
+	if (!p)
+		printf("Key 0 is not found in table\n");
+	p = BinarySearch(S, 10, 90);
+	printf("Key 90: key = %d, data = %d\n", S[p].key, S[p].data);
+	printf("---------- StaticSet ----------\n\n");
+}
+
+void BinarySearchTreeTest()
+{
+	SetElement<int, SequentialString> A[] = {
+		{10, "aaa"},
+		{8, "bbb"},
+		{21, "ccc"},
+		{87, "ddd"},
+		{56, "eee"},
+		{4, "fff"},
+		{11, "ggg"},
+		{3, "hhh"},
+		{22, "iiiii"},
+		{7, "jjj"}
+	};
+	BinarySearchTree<int, SequentialString> T;
+	SetElement<int, SequentialString> x, * p;
+	for (int i = 0; i < 10; i++)
+		T.insert(A[i]);
+	if (p = T.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	T.remove(56);
+	std::cout << "Now remove element by key 56\n";
+	if (p = T.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	if (p = T.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	T.remove(21);
+	std::cout << "Now remove element by key 21\n";
+	if (p = T.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	if (p = T.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	x = SetElement<int, SequentialString>(30, "xyz");
+	T.insert(x);
+	std::cout << "Now insert element (30, xyz)\n";
+	if (p = T.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	x = SetElement<int, SequentialString>(30, "xyz");
 }
 
 int main()
 {
-    ExpressionTreeTest();
+	BinarySearchTreeTest();
 	std::cout << "---------- All The Tests Have Been Finished! ----------\n";
 	return 0;
 }
