@@ -1,5 +1,6 @@
 #pragma once
 #include "DynamicSet.h"
+#include <iostream>
 
 template <typename KeyType, typename DataType>
 class BinarySearchTree : public DynamicSet<KeyType, DataType>
@@ -53,7 +54,8 @@ void BinarySearchTree<KeyType, DataType>::insert(TreeNode*& current, const SetEl
 template <typename KeyType, typename DataType>
 void BinarySearchTree<KeyType, DataType>::remove(TreeNode*& current, const KeyType& key)
 {
-	if (current == nullptr) return;
+	if (current == nullptr)
+		return;
 	if (key < (current->data).key)
 		remove(current->left, key);
 	else if (key > (current->data).key)
@@ -80,7 +82,8 @@ void BinarySearchTree<KeyType, DataType>::remove(TreeNode*& current, const KeyTy
 template <typename KeyType, typename DataType>
 void BinarySearchTree<KeyType, DataType>::clear(TreeNode* current)
 {
-	if (current == nullptr) return;
+	if (current == nullptr)
+		return;
 	clear(current->left);
 	clear(current->right);
 	delete current;

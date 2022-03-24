@@ -141,6 +141,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AATree.h" />
+    <ClInclude Include="AVLTree.h" />
     <ClInclude Include="BigInteger.h" />
     <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="BinaryTree.h" />
@@ -150,6 +152,7 @@
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="ExpressionTree.h" />
+    <ClInclude Include="Function.h" />
     <ClInclude Include="HuffmanTree.h" />
     <ClInclude Include="LinkedBinaryTree.h" />
     <ClInclude Include="LinkedQueue.h" />
@@ -159,6 +162,7 @@
     <ClInclude Include="Polynomial.h" />
     <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Queue.h" />
+    <ClInclude Include="RBTree.h" />
     <ClInclude Include="SequentialList.h" />
     <ClInclude Include="SequentialQueue.h" />
     <ClInclude Include="SequentialStack.h" />

@@ -34,6 +34,9 @@
     <Filter Include="头文件\Set">
       <UniqueIdentifier>{4f4a8f02-0c34-4978-b3ab-e87412d384a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Set\BalancedTree">
+      <UniqueIdentifier>{9c50e84f-baba-42b8-986f-d00394a27d64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="List.h">
@@ -119,6 +122,18 @@
     </ClInclude>
     <ClInclude Include="BinarySearchTree.h">
       <Filter>头文件\Set</Filter>
+    </ClInclude>
+    <ClInclude Include="AATree.h">
+      <Filter>头文件\Set\BalancedTree</Filter>
+    </ClInclude>
+    <ClInclude Include="AVLTree.h">
+      <Filter>头文件\Set\BalancedTree</Filter>
+    </ClInclude>
+    <ClInclude Include="RBTree.h">
+      <Filter>头文件\Set\BalancedTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.h">
+      <Filter>头文件\Basic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
