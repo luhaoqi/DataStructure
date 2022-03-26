@@ -28,7 +28,7 @@ private:
 public:
 	AVLTree();
 	~AVLTree();
-	SetElement<KeyType, DataType>* find(const KeyType& key) const;
+	const SetElement<KeyType, DataType>* find(const KeyType& key) const;
 	void insert(const SetElement<KeyType, DataType>& element);
 	void remove(const KeyType& key);
 	void clear();
@@ -201,7 +201,7 @@ void AVLTree<KeyType, DataType>::ZigZag(TreeNode*& current)
 }
 
 template <typename KeyType, typename DataType>
-SetElement<KeyType, DataType>* AVLTree<KeyType, DataType>::find(const KeyType& key) const
+const SetElement<KeyType, DataType>* AVLTree<KeyType, DataType>::find(const KeyType& key) const
 {
 	TreeNode* current = root;
 	while (current != nullptr && (current->data).key != key)

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <exception>
+#include <crtdbg.h>
 #include "Exception.h"
 #include "SequentialList.h"
 #include "SingleLinkedList.h"
@@ -22,6 +23,7 @@
 #include "StaticSet.h"
 #include "BinarySearchTree.h"
 #include "AVLTree.h"
+#include "RBTree.h"
 
 void ExceptionTest()
 {
@@ -582,7 +584,8 @@ void BinarySearchTreeTest()
 		{7, "jjj"}
 	};
 	BinarySearchTree<int, SequentialString> T;
-	SetElement<int, SequentialString> x, * p;
+	SetElement<int, SequentialString> x;
+	const SetElement<int, SequentialString>* p;
 	for (int i = 0; i < 10; i++)
 		T.insert(A[i]);
 	if (p = T.find(56))
@@ -635,7 +638,8 @@ void AVLTreeTest()
 		{7, "jjj"}
 	};
 	AVLTree<int, SequentialString> T;
-	SetElement<int, SequentialString> x, * p;
+	SetElement<int, SequentialString> x;
+	const SetElement<int, SequentialString>* p;
 	for (int i = 0; i < 10; i++)
 		T.insert(A[i]);
 	if (p = T.find(56))
@@ -672,9 +676,88 @@ void AVLTreeTest()
 	printf("---------- AVLTree ----------\n\n");
 }
 
+void RBTreeTest()
+{
+	printf("---------- RBTree ----------\n");
+	SetElement<int, SequentialString> A[] = {
+		{10, "aaa"},
+		{8, "bbb"},
+		{21, "ccc"},
+		{87, "ddd"},
+		{56, "eee"},
+		{4, "fff"},
+		{11, "ggg"},
+		{3, "hhh"},
+		{22, "iiiii"},
+		{7, "jjj"}
+	};
+	RBTree<int, SequentialString> T;
+	SetElement<int, SequentialString> x;
+	const SetElement<int, SequentialString>* p;
+	for (int i = 0; i < 10; i++)
+		T.insert(A[i]);
+	T.traverse();
+	if (p = T.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	T.remove(56);
+	std::cout << "Now remove element by key 56\n";
+	if (p = T.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	if (p = T.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	T.remove(21);
+	std::cout << "Now remove element by key 21\n";
+	if (p = T.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	if (p = T.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	x = SetElement<int, SequentialString>(30, "xyz");
+	T.insert(x);
+	std::cout << "Now insert element (30, xyz)\n";
+	if (p = T.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	T.traverse();
+	T.clear();
+	for (int i = 0; i < 26; i++)
+		T.insert(SetElement<int, SequentialString>(i, SequentialString("")));
+	T.traverse();
+	p = T.precursor(24);
+	if (p != nullptr)
+		std::cout << "Precursor of 24 is " << p->key << "\n";
+	p = T.successor(7);
+	if (p != nullptr)
+		std::cout << "Successor of 7 is " << p->key << "\n";
+	try
+	{
+		p = T.successor(25);
+		if (p == nullptr)
+			std::cout << "25 has no successor\n";
+		p = T.successor(26);
+		if (p == nullptr)
+			std::cout << "26 has no successor\n";
+	}
+	catch (const std::exception& E)
+	{
+		printf("%s\n", E.what());
+	}
+	printf("---------- RBTree ----------\n\n");
+}
+
 int main()
 {
-	AVLTreeTest();
+	_CrtDumpMemoryLeaks();
 	std::cout << "---------- All The Tests Have Been Finished! ----------\n";
 	return 0;
 }

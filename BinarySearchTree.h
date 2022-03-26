@@ -14,21 +14,21 @@ private:
 		TreeNode(const SetElement<KeyType, DataType>& _data, TreeNode* _left = nullptr, TreeNode* _right = nullptr) :data(_data), left(_left), right(_right) {}
 	};
 	TreeNode* root;
-	SetElement<KeyType, DataType>* find(TreeNode* current, const KeyType& key) const;
+	const SetElement<KeyType, DataType>* find(TreeNode* current, const KeyType& key) const;
 	void insert(TreeNode*& current, const SetElement<KeyType, DataType>& element);
 	void remove(TreeNode*& current, const KeyType& key);
 	void clear(TreeNode* current);
 public:
 	BinarySearchTree();
 	~BinarySearchTree();
-	SetElement<KeyType, DataType>* find(const KeyType& key) const;
+	const SetElement<KeyType, DataType>* find(const KeyType& key) const;
 	void insert(const SetElement<KeyType, DataType>& element);
 	void remove(const KeyType& key);
 	void clear();
 };
 
 template <typename KeyType, typename DataType>
-SetElement<KeyType, DataType>* BinarySearchTree<KeyType, DataType>::find(TreeNode* current, const KeyType& key) const
+const SetElement<KeyType, DataType>* BinarySearchTree<KeyType, DataType>::find(TreeNode* current, const KeyType& key) const
 {
 	if (current == nullptr)
 		return nullptr;
@@ -103,7 +103,7 @@ BinarySearchTree<KeyType, DataType>::~BinarySearchTree()
 }
 
 template <typename KeyType, typename DataType>
-SetElement<KeyType, DataType>* BinarySearchTree<KeyType, DataType>::find(const KeyType& key) const
+const SetElement<KeyType, DataType>* BinarySearchTree<KeyType, DataType>::find(const KeyType& key) const
 {
 	return find(root, key);
 }
