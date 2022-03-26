@@ -27,6 +27,7 @@ private:
 		}
 	};
 	TreeNode* root, * empty;
+	int count;
 	TreeNode* tree_maximum(TreeNode* target) const;
 	TreeNode* tree_minimum(TreeNode* target) const;
 	TreeNode* place_specific(const KeyType& key) const;
@@ -41,6 +42,7 @@ private:
 public:
 	RBTree();
 	~RBTree();
+	int size() const;
 	const SetElement<KeyType, DataType>* precursor(const KeyType& key) const;
 	const SetElement<KeyType, DataType>* successor(const KeyType& key) const;
 	const SetElement<KeyType, DataType>* find(const KeyType& key) const;
@@ -295,6 +297,7 @@ inline RBTree<KeyType, DataType>::RBTree()
 {
 	empty = new TreeNode();
 	root = empty;
+	count = 0;
 }
 
 template<typename KeyType, typename DataType>
@@ -302,6 +305,12 @@ inline RBTree<KeyType, DataType>::~RBTree()
 {
 	make_empty(root);
 	delete empty;
+}
+
+template<typename KeyType, typename DataType>
+inline int RBTree<KeyType, DataType>::size() const
+{
+	return count;
 }
 
 template<typename KeyType, typename DataType>
@@ -361,6 +370,7 @@ inline void RBTree<KeyType, DataType>::insert(const SetElement<KeyType, DataType
 	else
 		parent->right = addition;
 	insert_repair(addition);
+	count++;
 }
 
 template<typename KeyType, typename DataType>
@@ -402,6 +412,7 @@ inline void RBTree<KeyType, DataType>::remove(const KeyType& key)
 	if (color == NodeType::BLACK)
 		remove_repair(temp);
 	delete current;
+	count--;
 }
 
 template<typename KeyType, typename DataType>
@@ -444,4 +455,5 @@ inline void RBTree<KeyType, DataType>::clear()
 {
 	make_empty(root);
 	root = empty;
+	count = 0;
 }

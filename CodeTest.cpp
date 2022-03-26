@@ -752,11 +752,13 @@ void RBTreeTest()
 	{
 		printf("%s\n", E.what());
 	}
+	printf("Now size of set is %d\n", T.size());
 	printf("---------- RBTree ----------\n\n");
 }
 
 int main()
 {
+	RBTreeTest();
 	_CrtDumpMemoryLeaks();
 	std::cout << "---------- All The Tests Have Been Finished! ----------\n";
 	return 0;
