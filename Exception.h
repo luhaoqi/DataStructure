@@ -22,6 +22,26 @@ public:
 	}
 };
 
+class InvalidQuery : public std::exception
+{
+private:
+	char* message;
+public:
+	InvalidQuery(const char* content = "Error: Query is invalid")
+	{
+		message = new char[strlen(content) + 1];
+		strcpy(message, content);
+	}
+	virtual ~InvalidQuery()
+	{
+		delete[] message;
+	}
+	virtual const char* what() const throw()
+	{
+		return message;
+	}
+};
+
 class InvalidModify : public std::exception
 {
 private:

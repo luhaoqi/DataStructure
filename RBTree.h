@@ -309,7 +309,7 @@ inline const SetElement<KeyType, DataType>* RBTree<KeyType, DataType>::precursor
 {
 	TreeNode* target = place_specific(key);
 	if (target == empty)
-		throw InvalidModify("Error: No such element in set");
+		throw InvalidQuery("Error: No such element in set");
 	TreeNode* result = place_precursor(target);
 	if (result == empty)
 		return nullptr;
@@ -322,7 +322,7 @@ inline const SetElement<KeyType, DataType>* RBTree<KeyType, DataType>::successor
 {
 	TreeNode* target = place_specific(key);
 	if (target == empty)
-		throw InvalidModify("Error: No such element in set");
+		throw InvalidQuery("Error: No such element in set");
 	TreeNode* result = place_successor(target);
 	if (result == empty)
 		return nullptr;
