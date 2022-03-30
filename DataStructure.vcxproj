@@ -172,6 +172,7 @@
     <ClInclude Include="Set.h" />
     <ClInclude Include="SimulatorQueue.h" />
     <ClInclude Include="SingleLinkedList.h" />
+    <ClInclude Include="SplayTree.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StaticSet.h" />
     <ClInclude Include="String.h" />

@@ -144,6 +144,9 @@
     <ClInclude Include="OpenHashTable.h">
       <Filter>头文件\Set\HashTable</Filter>
     </ClInclude>
+    <ClInclude Include="SplayTree.h">
+      <Filter>头文件\Set</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CodeTest.cpp">

@@ -1,5 +1,7 @@
 #pragma once
 
+const int INF = 0x7fffffff;
+
 template <typename ElementType>
 ElementType max(ElementType x, ElementType y)
 {

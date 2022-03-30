@@ -1,6 +1,6 @@
 #pragma once
+#include "Exception.h"
 #include "DynamicSet.h"
-#include <iostream>
 
 template <typename KeyType, typename DataType>
 class BinarySearchTree : public DynamicSet<KeyType, DataType>

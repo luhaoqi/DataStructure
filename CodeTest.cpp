@@ -22,6 +22,7 @@
 #include "ExpressionTree.h"
 #include "StaticSet.h"
 #include "BinarySearchTree.h"
+#include "SplayTree.h"
 #include "AVLTree.h"
 #include "RBTree.h"
 #include "AATree.h"
@@ -625,6 +626,60 @@ void BinarySearchTreeTest()
 	printf("---------- BinarySearchTree ----------\n\n");
 }
 
+void SplayTreeTest()
+{
+	printf("---------- SplayTree ----------\n");
+	SetElement<int, SequentialString> A[] = {
+		{10, "aaa"},
+		{8, "bbb"},
+		{21, "ccc"},
+		{87, "ddd"},
+		{56, "eee"},
+		{4, "fff"},
+		{11, "ggg"},
+		{3, "hhh"},
+		{22, "iiiii"},
+		{7, "jjj"}
+	};
+	SplayTree<int, SequentialString> T;
+	SetElement<int, SequentialString> x;
+	const SetElement<int, SequentialString>* p;
+	for (int i = 0; i < 10; i++)
+		T.insert(A[i]);
+	if (p = T.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	T.remove(56);
+	std::cout << "Now remove element by key 56\n";
+	if (p = T.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	if (p = T.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	T.remove(21);
+	std::cout << "Now remove element by key 21\n";
+	if (p = T.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	if (p = T.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	x = SetElement<int, SequentialString>(30, "xyz");
+	T.insert(x);
+	std::cout << "Now insert element (30, xyz)\n";
+	if (p = T.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	printf("---------- SplayTree ----------\n\n");
+}
+
 void AVLTreeTest()
 {
 	printf("---------- AVLTree ----------\n");
@@ -998,7 +1053,7 @@ void OpenHashTableTest()
 
 int main()
 {
-	OpenHashTableTest();
+	SplayTreeTest();
 	_CrtDumpMemoryLeaks();
 	std::cout << "---------- All The Tests Have Been Finished! ----------\n";
 	return 0;
