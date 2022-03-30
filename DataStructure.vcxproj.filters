@@ -37,6 +37,9 @@
     <Filter Include="头文件\Set\BalancedTree">
       <UniqueIdentifier>{9c50e84f-baba-42b8-986f-d00394a27d64}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Set\HashTable">
+      <UniqueIdentifier>{9c335c81-76ee-445f-bf53-31f064eca3f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="List.h">
@@ -134,6 +137,12 @@
     </ClInclude>
     <ClInclude Include="Function.h">
       <Filter>头文件\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="CloseHashTable.h">
+      <Filter>头文件\Set\HashTable</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenHashTable.h">
+      <Filter>头文件\Set\HashTable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

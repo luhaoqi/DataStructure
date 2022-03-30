@@ -146,6 +146,7 @@
     <ClInclude Include="BigInteger.h" />
     <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="CloseHashTable.h" />
     <ClInclude Include="DynamicSet.h" />
     <ClInclude Include="ExpressionStack.h" />
     <ClInclude Include="Compare.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="LinkedStack.h" />
     <ClInclude Include="LinkedString.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="OpenHashTable.h" />
     <ClInclude Include="Polynomial.h" />
     <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Queue.h" />

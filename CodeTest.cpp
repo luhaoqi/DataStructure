@@ -25,6 +25,8 @@
 #include "AVLTree.h"
 #include "RBTree.h"
 #include "AATree.h"
+#include "CloseHashTable.h"
+#include "OpenHashTable.h"
 
 void ExceptionTest()
 {
@@ -813,9 +815,190 @@ void AATreeTest()
 	printf("---------- AATree ----------\n\n");
 }
 
+int HashParse(const int& key)
+{
+	return key * 2 + 1;
+}
+
+void CloseHashTableTest()
+{
+	printf("---------- CloseHashTable ----------\n");
+	SetElement<int, SequentialString> A[] = {
+		{10, "aaa"},
+		{8, "bbb"},
+		{21, "ccc"},
+		{87, "ddd"},
+		{56, "eee"},
+		{4, "fff"},
+		{11, "ggg"},
+		{3, "hhh"},
+		{22, "iiiii"},
+		{7, "jjj"}
+	};
+	CloseHashTable<int, SequentialString> T;
+	SetElement<int, SequentialString> x;
+	const SetElement<int, SequentialString>* p;
+	for (int i = 0; i < 10; i++)
+		T.insert(A[i]);
+	if (p = T.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	T.remove(56);
+	std::cout << "Now remove element by key 56\n";
+	if (p = T.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	if (p = T.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	T.remove(21);
+	std::cout << "Now remove element by key 21\n";
+	if (p = T.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	if (p = T.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	x = SetElement<int, SequentialString>(30, "xyz");
+	T.insert(x);
+	std::cout << "Now insert element (30, xyz)\n";
+	if (p = T.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	CloseHashTable<int, SequentialString> S(1007, HashParse);
+	for (int i = 0; i < 10; i++)
+		S.insert(A[i]);
+	if (p = S.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	S.remove(56);
+	std::cout << "Now remove element by key 56\n";
+	if (p = S.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	if (p = S.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	S.remove(21);
+	std::cout << "Now remove element by key 21\n";
+	if (p = S.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	if (p = S.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	x = SetElement<int, SequentialString>(30, "xyz");
+	S.insert(x);
+	std::cout << "Now insert element (30, xyz)\n";
+	if (p = S.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	printf("---------- CloseHashTable ----------\n\n");
+}
+
+void OpenHashTableTest()
+{
+	printf("---------- OpenHashTable ----------\n");
+	SetElement<int, SequentialString> A[] = {
+		{10, "aaa"},
+		{8, "bbb"},
+		{21, "ccc"},
+		{87, "ddd"},
+		{56, "eee"},
+		{4, "fff"},
+		{11, "ggg"},
+		{3, "hhh"},
+		{22, "iiiii"},
+		{7, "jjj"}
+	};
+	OpenHashTable<int, SequentialString> T;
+	SetElement<int, SequentialString> x;
+	const SetElement<int, SequentialString>* p;
+	for (int i = 0; i < 10; i++)
+		T.insert(A[i]);
+	if (p = T.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	T.remove(56);
+	std::cout << "Now remove element by key 56\n";
+	if (p = T.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	if (p = T.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	T.remove(21);
+	std::cout << "Now remove element by key 21\n";
+	if (p = T.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	if (p = T.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	x = SetElement<int, SequentialString>(30, "xyz");
+	T.insert(x);
+	std::cout << "Now insert element (30, xyz)\n";
+	if (p = T.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	OpenHashTable<int, SequentialString> S(1007, HashParse);
+	for (int i = 0; i < 10; i++)
+		S.insert(A[i]);
+	if (p = S.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	S.remove(56);
+	std::cout << "Now remove element by key 56\n";
+	if (p = S.find(56))
+		std::cout << "By key 56 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 56 find nothing\n";
+	if (p = S.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	S.remove(21);
+	std::cout << "Now remove element by key 21\n";
+	if (p = S.find(21))
+		std::cout << "By key 21 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 21 find nothing\n";
+	if (p = S.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	x = SetElement<int, SequentialString>(30, "xyz");
+	S.insert(x);
+	std::cout << "Now insert element (30, xyz)\n";
+	if (p = S.find(30))
+		std::cout << "By key 30 find (" << p->key << ", " << p->data << ")\n";
+	else
+		std::cout << "By key 30 find nothing\n";
+	printf("---------- OpenHashTable ----------\n\n");
+}
+
 int main()
 {
-	AATreeTest();
+	OpenHashTableTest();
 	_CrtDumpMemoryLeaks();
 	std::cout << "---------- All The Tests Have Been Finished! ----------\n";
 	return 0;
