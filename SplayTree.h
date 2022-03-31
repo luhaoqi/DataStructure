@@ -114,20 +114,25 @@ inline void SplayTree<KeyType, DataType>::make_splay(TreeNode* current, TreeNode
 template<typename KeyType, typename DataType>
 inline void SplayTree<KeyType, DataType>::delete_node(int rank)
 {
-	if (root == nullptr || root->size <= 1)
+	if (root == nullptr)
+		return;
+	if (root->size == 1)
 	{
+		delete root;
 		root = nullptr;
 		return;
 	}
 	if (rank == 1)
 	{
 		make_splay(rank_search(root, rank), nullptr);
+		delete root;
 		root = root->child[1];
 		root->parent = nullptr;
 	}
 	else if (rank == root->size)
 	{
 		make_splay(rank_search(root, rank), nullptr);
+		delete root;
 		root = root->child[0];
 		root->parent = nullptr;
 	}
@@ -135,6 +140,7 @@ inline void SplayTree<KeyType, DataType>::delete_node(int rank)
 	{
 		make_splay(rank_search(root, rank - 1), nullptr);
 		make_splay(rank_search(root, rank + 1), root);
+		delete root->child[1]->child[0];
 		root->child[1]->child[0] = nullptr;
 		update_size(root->child[1]);
 		update_size(root);
