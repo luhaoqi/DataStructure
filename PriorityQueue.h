@@ -41,7 +41,7 @@ template <typename ElementType, typename CompareRule>
 void PriorityQueue<ElementType, CompareRule>::update(int hole)
 {
 	ElementType temp = elementData[hole];
-	for (int next; (hole << 1) <= currentLength; hole = next)
+	for (int next = 0; (hole << 1) <= currentLength; hole = next)
 	{
 		next = hole << 1;
 		if (next != currentLength && compare(elementData[next | 1], elementData[next]))

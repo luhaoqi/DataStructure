@@ -3,6 +3,7 @@
 #include <exception>
 #include <crtdbg.h>
 #include "Exception.h"
+#include "Function.h"
 #include "SequentialList.h"
 #include "SingleLinkedList.h"
 #include "DoubleLinkedList.h"
@@ -31,6 +32,7 @@
 
 void ExceptionTest()
 {
+	printf("---------- Exception ----------\n");
 	try
 	{
 		DoubleLinkedList<int> L;
@@ -91,6 +93,83 @@ void ExceptionTest()
 	{
 		printf("%s\n", E.what());
 	}
+	printf("---------- Exception ----------\n\n");
+}
+
+void FunctionTest()
+{
+	printf("---------- Function ----------\n");
+	int a[10] = { 37,12,58,4,99,42,15,9,23,74 };
+	printf("original array:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	insert_sort(a, 10);
+	printf("insert sort:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	random_shuffle(a, 10);
+	printf("random shuffle:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	shell_sort(a, 10);
+	printf("shell sort:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	random_shuffle(a, 10);
+	printf("random shuffle:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	select_sort(a, 10);
+	printf("select sort:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	random_shuffle(a, 10);
+	printf("random shuffle:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	bubble_sort(a, 10);
+	printf("bubble sort:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	random_shuffle(a, 10);
+	printf("random shuffle:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	heap_sort(a, 10);
+	printf("heap sort:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	random_shuffle(a, 10);
+	printf("random shuffle:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	quick_sort(a, 10);
+	printf("quick sort:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	random_shuffle(a, 10);
+	printf("random shuffle:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	merge_sort(a, 10);
+	printf("merge sort:\t");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", a[i]);
+	printf("\n");
+	printf("---------- Function ----------\n\n");
 }
 
 void SequentialListTest()
@@ -1053,7 +1132,7 @@ void OpenHashTableTest()
 
 int main()
 {
-	SplayTreeTest();
+	FunctionTest();
 	_CrtDumpMemoryLeaks();
 	std::cout << "---------- All The Tests Have Been Finished! ----------\n";
 	return 0;
