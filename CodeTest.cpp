@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdio>
+#include <cstdlib>
 #include <exception>
 #include <crtdbg.h>
 #include "Exception.h"
@@ -29,6 +30,7 @@
 #include "AATree.h"
 #include "CloseHashTable.h"
 #include "OpenHashTable.h"
+#include "FindUnionSet.h"
 
 void ExceptionTest()
 {
@@ -1130,9 +1132,28 @@ void OpenHashTableTest()
 	printf("---------- OpenHashTable ----------\n\n");
 }
 
+void FindUnionSetTest()
+{
+	printf("---------- FindUnionSet ----------\n");
+	FindUnionSet S(5);
+	S.merge(1,2);
+	S.merge(3,4);
+	if (S.find(1) == S.find(2))
+		printf("1, 2 are together\n");
+	if (S.find(3) == S.find(4))
+		printf("3, 4 are together\n");
+	if (S.find(2) != S.find(4))
+		printf("2, 4 are not together\n");
+	S.merge(1, 3);
+	printf("Now merge 1, 3\n");
+	if (S.find(2) == S.find(4))
+		printf("2, 4 are together\n");
+	printf("---------- FindUnionSet ----------\n\n");
+}
+
 int main()
 {
-	FunctionTest();
+	FindUnionSetTest();
 	_CrtDumpMemoryLeaks();
 	std::cout << "---------- All The Tests Have Been Finished! ----------\n";
 	return 0;
