@@ -31,6 +31,8 @@
 #include "CloseHashTable.h"
 #include "OpenHashTable.h"
 #include "FindUnionSet.h"
+#include "AdjacencyMatrixGraph.h"
+#include "AdjacencyListGraph.h"
 
 void ExceptionTest()
 {
@@ -1136,8 +1138,8 @@ void FindUnionSetTest()
 {
 	printf("---------- FindUnionSet ----------\n");
 	FindUnionSet S(5);
-	S.merge(1,2);
-	S.merge(3,4);
+	S.merge(1, 2);
+	S.merge(3, 4);
 	if (S.find(1) == S.find(2))
 		printf("1, 2 are together\n");
 	if (S.find(3) == S.find(4))
@@ -1151,9 +1153,55 @@ void FindUnionSetTest()
 	printf("---------- FindUnionSet ----------\n\n");
 }
 
+void AdjacencyMatrixGraphTest()
+{
+	printf("---------- AdjacencyMatrixGraph ----------\n");
+	AdjacencyMatrixGraph<char, int> G(5, "abcde", -1);
+	if (!G.exist('a', 'e'))
+		printf("edge <a, e> does not exist\n");
+	G.insert('a', 'e', 7);
+	G.insert('c', 'd', 7);
+	printf("now insert edge <a, e> and <c, d>\n");
+	if (G.exist('a', 'e'))
+		printf("edge <a, e> exists\n");
+	if (!G.exist('d', 'c'))
+		printf("edge <d, c> does not exist\n");
+	printf("there are %d vertices in graph\n", G.vertex_count());
+	printf("there are %d edges in graph\n", G.edge_count());
+	G.remove('a', 'e');
+	printf("now remove edge <a, e>\n");
+	if (!G.exist('a', 'e'))
+		printf("edge <a, e> does not exist\n");
+	printf("there are %d edges in graph\n", G.edge_count());
+	printf("---------- AdjacencyMatrixGraph ----------\n\n");
+}
+
+void AdjacencyListGraphTest()
+{
+	printf("---------- AdjacencyListGraph ----------\n");
+	AdjacencyListGraph<char, int> G(5, "abcde");
+	if (!G.exist('a', 'e'))
+		printf("edge <a, e> does not exist\n");
+	G.insert('a', 'e', 7);
+	G.insert('c', 'd', 7);
+	printf("now insert edge <a, e> and <c, d>\n");
+	if (G.exist('a', 'e'))
+		printf("edge <a, e> exists\n");
+	if (!G.exist('d', 'c'))
+		printf("edge <d, c> does not exist\n");
+	printf("there are %d vertices in graph\n", G.vertex_count());
+	printf("there are %d edges in graph\n", G.edge_count());
+	G.remove('a', 'e');
+	printf("now remove edge <a, e>\n");
+	if (!G.exist('a', 'e'))
+		printf("edge <a, e> does not exist\n");
+	printf("there are %d edges in graph\n", G.edge_count());
+	printf("---------- AdjacencyListGraph ----------\n\n");
+}
+
 int main()
 {
-	FindUnionSetTest();
+	AdjacencyListGraphTest();
 	_CrtDumpMemoryLeaks();
 	std::cout << "---------- All The Tests Have Been Finished! ----------\n";
 	return 0;

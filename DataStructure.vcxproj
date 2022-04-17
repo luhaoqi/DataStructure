@@ -142,6 +142,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AATree.h" />
+    <ClInclude Include="AdjacencyListGraph.h" />
+    <ClInclude Include="AdjacencyMatrixGraph.h" />
     <ClInclude Include="AVLTree.h" />
     <ClInclude Include="BigInteger.h" />
     <ClInclude Include="BinarySearchTree.h" />
@@ -155,6 +157,7 @@
     <ClInclude Include="ExpressionTree.h" />
     <ClInclude Include="FindUnionSet.h" />
     <ClInclude Include="Function.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="HuffmanTree.h" />
     <ClInclude Include="LinkedBinaryTree.h" />
     <ClInclude Include="LinkedQueue.h" />

@@ -34,6 +34,9 @@
     <Filter Include="头文件\Set">
       <UniqueIdentifier>{4f4a8f02-0c34-4978-b3ab-e87412d384a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Graph">
+      <UniqueIdentifier>{df23a5fc-f69b-4c47-bd39-c627afde9f69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="List.h">
@@ -143,6 +146,15 @@
     </ClInclude>
     <ClInclude Include="RBTree.h">
       <Filter>头文件\Set</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>头文件\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="AdjacencyMatrixGraph.h">
+      <Filter>头文件\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="AdjacencyListGraph.h">
+      <Filter>头文件\Graph</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
