@@ -1196,6 +1196,25 @@ void AdjacencyListGraphTest()
 	if (!G.exist('a', 'e'))
 		printf("edge <a, e> does not exist\n");
 	printf("there are %d edges in graph\n", G.edge_count());
+	G.insert('a', 'b', 5);
+	G.insert('a', 'c', 2);
+	G.insert('c', 'e', 4);
+	G.depth_first_search();
+	G.breadth_first_search();
+	G.topological_sort();
+	int v[6] = {1,2,3,4,5,6};
+	AdjacencyListGraph<int, int> E(6, v);
+	E.insert(1, 2, 1);
+	E.insert(1, 3, 3);
+	E.insert(1, 4, 5);
+	E.insert(2, 3, 1);
+	E.insert(2, 5, 2);
+	E.insert(3, 4, 1);
+	E.insert(3, 6, 2);
+	E.insert(4, 5, 1);
+	E.insert(4, 6, 2);
+	E.insert(5, 6, 2);
+	E.critical_path();
 	printf("---------- AdjacencyListGraph ----------\n\n");
 }
 
