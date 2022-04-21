@@ -1202,7 +1202,7 @@ void AdjacencyListGraphTest()
 	G.depth_first_search();
 	G.breadth_first_search();
 	G.topological_sort();
-	int v[6] = {1,2,3,4,5,6};
+	int v[6] = { 1,2,3,4,5,6 };
 	AdjacencyListGraph<int, int> E(6, v);
 	E.insert(1, 2, 1);
 	E.insert(1, 3, 3);
@@ -1218,9 +1218,134 @@ void AdjacencyListGraphTest()
 	printf("---------- AdjacencyListGraph ----------\n\n");
 }
 
+void KruskalTest()
+{
+	printf("---------- Kruskal ----------\n");
+	int V[6] = { 1, 2, 3, 4, 5, 6 };
+	AdjacencyListGraph<int, int> G(6, V);
+	G.insert(1, 2, 6), G.insert(2, 1, 6);
+	G.insert(1, 3, 1), G.insert(3, 1, 1);
+	G.insert(1, 4, 5), G.insert(4, 1, 5);
+	G.insert(2, 3, 5), G.insert(3, 2, 5);
+	G.insert(2, 5, 3), G.insert(5, 2, 3);
+	G.insert(3, 4, 5), G.insert(4, 3, 5);
+	G.insert(3, 5, 6), G.insert(5, 3, 6);
+	G.insert(3, 6, 4), G.insert(6, 3, 4);
+	G.insert(4, 6, 2), G.insert(6, 4, 2);
+	G.insert(5, 6, 6), G.insert(6, 5, 6);
+	G.kruskal();
+	printf("---------- Kruskal ----------\n\n");
+}
+
+void PrimTest()
+{
+	printf("---------- Prim ----------\n");
+	int V[6] = { 1, 2, 3, 4, 5, 6 };
+	AdjacencyListGraph<int, int> G(6, V);
+	G.insert(1, 2, 6), G.insert(2, 1, 6);
+	G.insert(1, 3, 1), G.insert(3, 1, 1);
+	G.insert(1, 4, 5), G.insert(4, 1, 5);
+	G.insert(2, 3, 5), G.insert(3, 2, 5);
+	G.insert(2, 5, 3), G.insert(5, 2, 3);
+	G.insert(3, 4, 5), G.insert(4, 3, 5);
+	G.insert(3, 5, 6), G.insert(5, 3, 6);
+	G.insert(3, 6, 4), G.insert(6, 3, 4);
+	G.insert(4, 6, 2), G.insert(6, 4, 2);
+	G.insert(5, 6, 6), G.insert(6, 5, 6);
+	G.prim();
+	printf("---------- Prim ----------\n\n");
+}
+
+void UnweightedDistanceTest()
+{
+	printf("---------- UnweightedDistance ----------\n");
+	int V[6] = { 1, 2, 3, 4, 5, 6 };
+	AdjacencyListGraph<int, int> G(6, V);
+	G.insert(1, 2, 6), G.insert(2, 1, 6);
+	G.insert(1, 3, 1), G.insert(3, 1, 1);
+	G.insert(1, 4, 5), G.insert(4, 1, 5);
+	G.insert(2, 3, 5), G.insert(3, 2, 5);
+	G.insert(2, 5, 3), G.insert(5, 2, 3);
+	G.insert(3, 4, 5), G.insert(4, 3, 5);
+	G.insert(3, 5, 6), G.insert(5, 3, 6);
+	G.insert(3, 6, 4), G.insert(6, 3, 4);
+	G.insert(4, 6, 2), G.insert(6, 4, 2);
+	G.insert(5, 6, 6), G.insert(6, 5, 6);
+	G.unweighted_distance(1, 0x3fffffff);
+	G.unweighted_distance(3, 0x3fffffff);
+	G.unweighted_distance(5, 0x3fffffff);
+	printf("---------- UnweightedDistance ----------\n\n");
+}
+
+void DijkstraTest()
+{
+	printf("---------- Dijkstra ----------\n");
+	int V[7] = { 0, 1, 2, 3, 4, 5, 6 };
+	AdjacencyListGraph<int, int> G(7, V);
+	G.insert(0, 1, 2);
+	G.insert(0, 3, 1);
+	G.insert(1, 3, 3);
+	G.insert(1, 4, 10);
+	G.insert(2, 0, 4);
+	G.insert(2, 5, 5);
+	G.insert(3, 2, 2);
+	G.insert(3, 4, 2);
+	G.insert(3, 5, 8);
+	G.insert(3, 6, 4);
+	G.insert(4, 6, 6);
+	G.insert(6, 5, 1);
+	G.dijkstra(1, 0x3fffffff);
+	printf("---------- Dijkstra ----------\n\n");
+}
+
+void FloydTest()
+{
+	printf("---------- Floyd ----------\n");
+	int V[3] = { 0, 1, 2 };
+	AdjacencyMatrixGraph<int, int> G(3, V, 0x3fffffff);
+	G.insert(0, 1, 8);
+	G.insert(0, 2, 5);
+	G.insert(1, 0, 3);
+	G.insert(2, 0, 6);
+	G.insert(2, 1, 2);
+	G.floyd();
+	printf("---------- Floyd ----------\n\n");
+}
+
 int main()
 {
+	ExceptionTest();
+	FunctionTest();
+	SequentialListTest();
+	SingleLinkedListTest();
+	DoubleLinkedListTest();
+	BigIntegerTest();
+	SequentialStackTest();
+	LinkedStackTest();
+	ExpressionStackTest();
+	SequentialQueueTest();
+	LinkedQueueTest();
+	SequentialStringTest();
+	LinkedStringTest();
+	PriorityQueueTest();
+	HuffmanTreeTest();
+	ExpressionTreeTest();
+	StaticSetTest();
+	BinarySearchTreeTest();
+	SplayTreeTest();
+	AVLTreeTest();
+	RBTreeTest();
+	AATreeTest();
+	CloseHashTableTest();
+	OpenHashTableTest();
+	FindUnionSetTest();
+	AdjacencyMatrixGraphTest();
 	AdjacencyListGraphTest();
+	KruskalTest();
+	PrimTest();
+	UnweightedDistanceTest();
+	DijkstraTest();
+	FloydTest();
 	_CrtDumpMemoryLeaks();
 	std::cout << "---------- All The Tests Have Been Finished! ----------\n";
 	return 0;

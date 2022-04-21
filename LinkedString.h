@@ -28,6 +28,10 @@ private:
 		{
 			data = new char[_capacity];
 		}
+		~StringNode()
+		{
+			delete data;
+		}
 	};
 	StringNode* head;
 	int size, capacity;

@@ -3,6 +3,28 @@
 
 const int INF = 0x7fffffff;
 
+template<typename FirstType, typename SecondType>
+class pair
+{
+public:
+	FirstType first;
+	SecondType second;
+	pair() : first(), second() {}
+	pair(FirstType _first, SecondType _second) : first(_first), second(_second) {}
+	bool operator==(const pair<FirstType, SecondType>& another) const
+	{
+		return first == another.first && second == another.second;
+	}
+	bool operator<(const pair<FirstType, SecondType>& another) const
+	{
+		return first == another.first ? second < another.second : first < another.first;
+	}
+	bool operator>(const pair<FirstType, SecondType>& another)
+	{
+		return first == another.first ? second > another.second : first > another.first;
+	}
+};
+
 template <typename ElementType>
 ElementType max(const ElementType& x, const ElementType& y)
 {
@@ -137,7 +159,7 @@ int make_partition(ElementType data[], int low, int high)
 }
 
 template <typename ElementType>
-void quick_sort(ElementType data[], int low,int high)
+void quick_sort(ElementType data[], int low, int high)
 {
 	if (low >= high)
 		return;
