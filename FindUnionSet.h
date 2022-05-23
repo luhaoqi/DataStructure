@@ -36,7 +36,7 @@ int FindUnionSet::find(int x)
 
 void FindUnionSet::merge(int x, int y)
 {
-	int p = parent[x], q = parent[y];
+	int p = find(x), q = find(y);
 	if (p != q)
 		parent[p] = q;
 }
